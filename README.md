@@ -21,11 +21,11 @@ _开新坑了，又是新的51！！哈哈哈  原来的[BST-C51单片机在这�
 - [如何贡献](#如何贡献)
 - [使用许可](#使用许可)
 ## 更新
-- 2020年10月9日12:17:54 3天的堕落，更新[18chapter](https://github.com/yujiecong/yjc-c51-A2-learning/tree/master/contents/%E5%AE%9E%E9%AA%8C18%EF%BC%9ADS1302%E6%97%B6%E9%92%9F)..
-- 2020年10月6日15:51:41 挣扎中，不想学习..
-- 2020年10月5日16:40:07 17chapter[温度传感器](https://github.com/yujiecong/yjc-c51-A2-learning/tree/master/contents/%E5%AE%9E%E9%AA%8C17%EF%BC%9ADS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8)
-- 2020年10月5日13:27:48 网络问题，现在才更新，更到了[16章](https://github.com/yujiecong/yjc-c51-A2-learning/tree/master/contents/%E5%AE%9E%E9%AA%8C16%EF%BC%9AEEPROM-IIC)
-- 2020年10月4日13:32:16 更新综合测试[秒表](https://github.com/yujiecong/yjc-c51-A2-learning/tree/master/contents/%E5%AE%9E%E9%AA%8C1~15%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C:%E7%A7%92%E8%A1%A8)
+- 2020年10月10日18:55:22 update [contents](https://github.com/yujiecong/yjc-PrechinA2-learning/tree/master/contents)
+- 2020年10月9日12:17:54 3天的堕落，更新18chapter
+- 2020年10月5日16:40:07 17chapter温度传感器
+- 2020年10月5日13:27:48 网络问题，现在才更新，更到了16章
+- 2020年10月4日13:32:16 更新综合测试秒表
 - 2020年10月3日15:37:44 更新至15章，好累，休息去了
 - 2020年10月3日12:50:40 更新第十章
 - 2020年10月3日10:51:09 更新八九章，解决了这个[issue](https://github.com/yujiecong/yjc-c51-A2-learning/issues)，有了更深入的理解
@@ -82,7 +82,7 @@ _由于单片机IO引脚有限，所以会经常出现复用引脚的情况，�
 
 ## 安装
 
-参考[之前BST-S51是环境需求](https://github.com/yujiecong/yjc-BST-M51-learning)
+参考[之前BST-S51是环境需求](https://github.com/yujiecong/yjc-PrechinA2-learning)
 
 ```sh
 如果出现问题，请提交issue！！keil4版本要找到STC89S51！
@@ -94,7 +94,7 @@ _由于单片机IO引脚有限，所以会经常出现复用引脚的情况，�
 
 ## 相关仓库
 
-- [yjc-BST-M51-learning](https://github.com/yujiecong/yjc-BST-M51-learning)
+- [yjc-BST-M51-learning](https://github.com/yujiecong/yjc-PrechinA2-learning)
 
 ## 维护者
 
@@ -114,4 +114,4 @@ _由于单片机IO引脚有限，所以会经常出现复用引脚的情况，�
 
 
 ## 使用许可
-[MIT License](https://github.com/yujiecong/yjc-c51-A2-learning/blob/master/LICENSE)
+[MIT License](https://github.com/yujiecong/yjc-PrechinA2-learning/blob/master/LICENSE)
