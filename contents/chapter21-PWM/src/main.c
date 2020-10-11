@@ -89,19 +89,11 @@ void main()
 		}
 		if(timer1 <value)	
 		{
-<<<<<<< HEAD
 			PWM=1;
 		}
 		else
 		{
 			PWM=0;
-=======
-			PWM=0xff;
-		}
-		else
-		{
-			PWM=0x00;
->>>>>>> 9fbb0ac93274a8d302ed35b9c386aeb909b96556
 		}		
 	}		
 }
