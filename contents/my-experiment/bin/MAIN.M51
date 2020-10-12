@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        10/12/2020  20:44:03  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/12/2020  23:23:52  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -56,10 +56,10 @@ SEGMENT
   +--> ?PR?_CHOICE88LED?MAIN
 
 ?PR?_CHOICE88LED?MAIN
-  +--> ?PR?_SEND2BYTE?MAIN
+  +--> ?PR?_SENDBYTE?MAIN
 
 
-BL51 BANKED LINKER/LOCATER V6.22                                                      10/12/2020  20:44:03  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/12/2020  23:23:52  PAGE 2
 
 
 
@@ -82,7 +82,7 @@ SYMBOL TABLE OF MODULE:  MAIN (MAIN)
     SEGMENT: ?PR?LEDTURNON?MAIN
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SENDBYTE?MAIN
+    SEGMENT: ?PR?_SEND2BYTE?MAIN
 
 Program Size: data=13.0 xdata=0 code=335
 LINK/LOCATE RUN COMPLETE.  4 WARNING(S),  0 ERROR(S)

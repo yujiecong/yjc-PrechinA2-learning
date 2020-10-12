@@ -14,13 +14,13 @@ void send2Byte(uchar dat1, uchar dat2);
 void choice88Led(uchar line, uchar column)
 {
 
-    uchar i, j = 1, l = 1;
+    uchar i, j = 0x01, l = 0x01;
     for (i = 0; i < line; i++)
         j <<= 2;
     for (i = 1; i < 8 - column; i++)
         l <<= 2;
 
-    P0 = (0xff - l);
+    P0 = 0xff-l;
     sendByte(j);
 }
 
