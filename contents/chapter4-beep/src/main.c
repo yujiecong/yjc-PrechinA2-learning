@@ -17,7 +17,8 @@
 typedef unsigned int u16;	  //对数据类型进行声明定义
 typedef unsigned char u8;
 
-sbit beep=P1^5;	   
+ 
+sbit beep=P1^5;	
 
 /*******************************************************************************
 * 函 数 名         : delay
