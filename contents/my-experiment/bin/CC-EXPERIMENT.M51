@@ -1,8 +1,9 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        10/12/2020  17:20:41  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/12/2020  20:25:36  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
-F:\KEILC51\C51\BIN\BL51.EXE D:\CCREPOSITORY\MY-EXPERIMENT\LIB\C51S.LIB, MAIN.OBJ, STARTUP.OBJ TO CC-EXPERIMENT
+F:\KEILC51\C51\BIN\BL51.EXE D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\CONTENTS\MY-EXPERIMENT\LIB\C51S.LIB, MAIN.OBJ, ST
+>> ARTUP.OBJ TO CC-EXPERIMENT
 
 
 MEMORY MODEL: SMALL
@@ -11,7 +12,7 @@ MEMORY MODEL: SMALL
 INPUT MODULES INCLUDED:
   MAIN.OBJ (MAIN)
   STARTUP.OBJ (?C_STARTUP)
-  D:\CCREPOSITORY\MY-EXPERIMENT\LIB\C51S.LIB (?C?IMUL)
+  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\CONTENTS\MY-EXPERIMENT\LIB\C51S.LIB (?C?IMUL)
 
 
 LINK MAP OF MODULE:  CC-EXPERIMENT (MAIN)
@@ -28,15 +29,17 @@ LINK MAP OF MODULE:  CC-EXPERIMENT (MAIN)
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
-            CODE    0003H     0038H     UNIT         ?PR?_LEDNTURN?MAIN
-            CODE    003BH     0033H     UNIT         ?PR?_SENDBYTE?MAIN
-            CODE    006EH     002DH     UNIT         ?PR?_LEDWATER?MAIN
-            CODE    009BH     0020H     UNIT         ?PR?MAIN?MAIN
-            CODE    00BBH     0012H     UNIT         ?C?LIB_CODE
-            CODE    00CDH     000CH     UNIT         ?C_C51STARTUP
-            CODE    00D9H     000BH     UNIT         ?PR?_DELAY?MAIN
-            CODE    00E4H     0004H     UNIT         ?PR?LEDTURNOFF?MAIN
-            CODE    00E8H     0004H     UNIT         ?PR?LEDTURNON?MAIN
+            CODE    0003H     0043H     UNIT         ?PR?_CHOICE88LED?MAIN
+            CODE    0046H     0041H     UNIT         ?PR?_SEND2BYTE?MAIN
+            CODE    0087H     0038H     UNIT         ?PR?_LEDNTURN?MAIN
+            CODE    00BFH     0033H     UNIT         ?PR?_SENDBYTE?MAIN
+            CODE    00F2H     002DH     UNIT         ?PR?_LEDWATER?MAIN
+            CODE    011FH     0012H     UNIT         ?C?LIB_CODE
+            CODE    0131H     000CH     UNIT         ?PR?MAIN?MAIN
+            CODE    013DH     000CH     UNIT         ?C_C51STARTUP
+            CODE    0149H     000BH     UNIT         ?PR?_DELAY?MAIN
+            CODE    0154H     0004H     UNIT         ?PR?LEDTURNOFF?MAIN
+            CODE    0158H     0004H     UNIT         ?PR?LEDTURNON?MAIN
 
 
 
@@ -50,21 +53,20 @@ SEGMENT
   +--> ?PR?MAIN?MAIN
 
 ?PR?MAIN?MAIN
-  +--> ?PR?_SENDBYTE?MAIN
-  +--> ?PR?_DELAY?MAIN
+  +--> ?PR?_SEND2BYTE?MAIN
 
 
 
 SYMBOL TABLE OF MODULE:  CC-EXPERIMENT (MAIN)
 
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/12/2020  20:25:36  PAGE 2
+
+
   VALUE           TYPE          NAME
   ----------------------------------
-BL51 BANKED LINKER/LOCATER V6.22                                                      10/12/2020  17:20:41  PAGE 2
-
-
 
   -------         MODULE        ?C?IMUL
-  C:00BBH         PUBLIC        ?C?IMUL
+  C:011FH         PUBLIC        ?C?IMUL
   -------         ENDMOD        ?C?IMUL
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
@@ -76,5 +78,8 @@ SYMBOL TABLE OF MODULE:  CC-EXPERIMENT (MAIN)
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?LEDTURNON?MAIN
 
-Program Size: data=13.0 xdata=0 code=236
-LINK/LOCATE RUN COMPLETE.  3 WARNING(S),  0 ERROR(S)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHOICE88LED?MAIN
+
+Program Size: data=13.0 xdata=0 code=348
+LINK/LOCATE RUN COMPLETE.  4 WARNING(S),  0 ERROR(S)

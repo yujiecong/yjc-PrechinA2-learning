@@ -5,29 +5,29 @@
 注意事项：一定要将J24短接片短接到GND端。																				  
 ***************************************************************************************/
 
-#include "reg51.h"			 //此文件中定义了单片机的一些特殊功能寄存器
-#include<intrins.h>
+#include "reg51.h" //此文件中定义了单片机的一些特殊功能寄存器
+#include <intrins.h>
 
-typedef unsigned int u16;	  //对数据类型进行声明定义
+typedef unsigned int u16; //对数据类型进行声明定义
 typedef unsigned char u8;
 
-sbit SRCLK=P3^6;
-sbit RCLK=P3^5;
-sbit SER=P3^4;
+sbit SRCLK = P3 ^ 6;
+sbit RCLK = P3 ^ 5;
+sbit SER = P3 ^ 4;
 
-u8 ledduan[]={{0x00,0x00,0x3e,0x41,0x41,0x41,0x3e,0x00},
-			  {0x00,0x00,0x00,0b01000001,0xff,0x01,0x00,0x00},
-			  {}
-			  };//从左到右的 数字组合，此处代表0
+u8 ledduan[] = {{0x00, 0x00, 0x3e, 0x41, 0x41, 0x41, 0x3e, 0x00},
+				{0x00, 0x00, 0x00, 0b01000001, 0xff, 0x01, 0x00, 0x00},
+				{}}; //从左到右的 数字组合，此处代表0
 
-u8 ledwei[]={0x7f,0xbf,0xdf,0xef,0xf7,0xfb,0xfd,0xfe};//8x8从左到右的P0段选 
+u8 ledwei[] = {0x7f, 0xbf, 0xdf, 0xef, 0xf7, 0xfb, 0xfd, 0xfe}; //8x8从左到右的P0段选
 /*******************************************************************************
 * 函 数 名         : delay
 * 函数功能		   : 延时函数，i=1时，大约延时10us
 *******************************************************************************/
 void delay(u16 i)
 {
-	while(i--);	
+	while (i--)
+		;
 }
 
 /*******************************************************************************
@@ -39,23 +39,23 @@ void delay(u16 i)
 void Hc595SendByte(u8 dat)
 {
 	u8 a;
-	SRCLK=0;
-	RCLK=0;
-	for(a=0;a<8;a++)
+	SRCLK = 0;
+	RCLK = 0;
+	for (a = 0; a < 8; a++)
 	{
-		SER=dat>>7;
-		dat<<=1;
+		SER = dat >> 7;
+		dat <<= 1;
 
-		SRCLK=1;
+		SRCLK = 1;
 		_nop_();
 		_nop_();
-		SRCLK=0;	
+		SRCLK = 0;
 	}
 
-	RCLK=1;
+	RCLK = 1;
 	_nop_();
 	_nop_();
-	RCLK=0;
+	RCLK = 0;
 }
 
 /*******************************************************************************
@@ -65,17 +65,17 @@ void Hc595SendByte(u8 dat)
 * 输    出    	 : 无
 *******************************************************************************/
 void main()
-{			
+{
 	u8 i;
-	while(1)
+	while (1)
 	{
-		P0=0x7f;//0111 1111
-		for(i=0;i<8;i++)
+		P0 = 0x7f; //0111 1111
+		for (i = 0; i < 8; i++)
 		{
-			P0=ledwei[i];		  //位选
-			Hc595SendByte(ledduan[i]);	//发送段选数据
-			delay(100);		   //延时
-			Hc595SendByte(0x00);  //消隐
-		}	
-	}		
+			P0 = ledwei[i];			   //位选
+			Hc595SendByte(ledduan[i]); //发送段选数据
+			delay(100);				   //延时
+			Hc595SendByte(0x00);	   //消隐
+		}
+	}
 }

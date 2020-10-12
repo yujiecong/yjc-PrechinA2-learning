@@ -3,13 +3,10 @@
 #include "74HC595.h"
 void main()
 {
-    uchar n = 0xfe;
-    P2 = n;
+    P0 = 0x00;
     while (1)
     {
-        sendByte(n);
-        n = _crol_(n, 1);
-        P2 = n;
-        delay(50000);
+        choice88Led((uchar)0xfe, (uchar)0x00);
+        // send2Byte(0xfe, 0x01);
     }
 }
