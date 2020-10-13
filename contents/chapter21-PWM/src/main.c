@@ -20,11 +20,7 @@ typedef unsigned int u16;	  //对数据类型进行声明定义
 typedef unsigned char u8;
 
 //--定义使用的IO口--//
-<<<<<<< HEAD
 sbit PWM=P2^1;
-=======
-sbit PWM=P2;
->>>>>>> 9fbb0ac93274a8d302ed35b9c386aeb909b96556
 bit DIR;
 
 //--定义一个全局变量--// 

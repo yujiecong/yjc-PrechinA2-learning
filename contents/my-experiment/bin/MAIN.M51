@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        10/13/2020  11:22:47  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/13/2020  18:14:33  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -12,7 +12,7 @@ MEMORY MODEL: SMALL
 INPUT MODULES INCLUDED:
   MAIN.OBJ (MAIN)
   STARTUP.OBJ (?C_STARTUP)
-  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\CONTENTS\MY-EXPERIMENT\LIB\C51S.LIB (?C?IMUL)
+  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\CONTENTS\MY-EXPERIMENT\LIB\C51S.LIB (?C?UIDIV)
 
 
 LINK MAP OF MODULE:  MAIN (MAIN)
@@ -23,23 +23,22 @@ LINK MAP OF MODULE:  MAIN (MAIN)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     0002H     UNIT         ?DT?_LEDWATER?MAIN
-            DATA    000AH     0002H     UNIT         ?DT?_LEDNTURN?MAIN
-            IDATA   000CH     0001H     UNIT         ?STACK
+            IDATA   0008H     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
-            CODE    0003H     0041H     UNIT         ?PR?_SEND2BYTE?MAIN
-            CODE    0044H     0038H     UNIT         ?PR?_LEDNTURN?MAIN
-            CODE    007CH     0036H     UNIT         ?PR?_CHOICE88LED?MAIN
-            CODE    00B2H     0033H     UNIT         ?PR?_SENDBYTE?MAIN
-            CODE    00E5H     002DH     UNIT         ?PR?_LEDWATER?MAIN
-            CODE    0112H     0012H     UNIT         ?C?LIB_CODE
-            CODE    0124H     000CH     UNIT         ?PR?MAIN?MAIN
-            CODE    0130H     000CH     UNIT         ?C_C51STARTUP
-            CODE    013CH     000BH     UNIT         ?PR?_DELAY?MAIN
-            CODE    0147H     0004H     UNIT         ?PR?LEDTURNOFF?MAIN
-            CODE    014BH     0004H     UNIT         ?PR?LEDTURNON?MAIN
+            CODE    0003H     008FH     UNIT         ?PR?MAIN?MAIN
+            CODE    0092H     0065H     UNIT         ?PR?_DIGDISPLAY?MAIN
+            CODE    00F7H     0055H     UNIT         ?C?LIB_CODE
+            CODE    014CH     0051H     UNIT         ?PR?_DIGCHOICE?MAIN
+            CODE    019DH     0024H     UNIT         ?PR?SPI_READ?MAIN
+            CODE    01C1H     001CH     UNIT         ?PR?_SPI_WRITE?MAIN
+            CODE    01DDH     0019H     UNIT         ?PR?_READAD_DATA?MAIN
+            CODE    01F6H     0011H     UNIT         ?CO?MAIN
+            CODE    0207H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0213H     000BH     UNIT         ?PR?_DELAY?MAIN
+            CODE    021EH     0007H     UNIT         ?PR?DELAYS?MAIN
+            CODE    0225H     0004H     UNIT         ?PR?_GETAD_DATA?MAIN
 
 
 
@@ -53,13 +52,22 @@ SEGMENT
   +--> ?PR?MAIN?MAIN
 
 ?PR?MAIN?MAIN
-  +--> ?PR?_CHOICE88LED?MAIN
+  +--> ?PR?_GETAD_DATA?MAIN
+  +--> ?PR?_DIGDISPLAY?MAIN
 
-?PR?_CHOICE88LED?MAIN
-  +--> ?PR?_SENDBYTE?MAIN
+?PR?_GETAD_DATA?MAIN
+  +--> ?PR?_READAD_DATA?MAIN
+
+?PR?_READAD_DATA?MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/13/2020  18:14:33  PAGE 2
 
 
-BL51 BANKED LINKER/LOCATER V6.22                                                      10/13/2020  11:22:47  PAGE 2
+  +--> ?PR?_SPI_WRITE?MAIN
+  +--> ?PR?SPI_READ?MAIN
+
+?PR?_DIGDISPLAY?MAIN
+  +--> ?CO?MAIN
+  +--> ?PR?_DELAY?MAIN
 
 
 
@@ -68,21 +76,15 @@ SYMBOL TABLE OF MODULE:  MAIN (MAIN)
   VALUE           TYPE          NAME
   ----------------------------------
 
-  -------         MODULE        ?C?IMUL
-  C:0112H         PUBLIC        ?C?IMUL
-  -------         ENDMOD        ?C?IMUL
+  -------         MODULE        ?C?UIDIV
+  C:00F7H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_LEDWATER?MAIN
+    SEGMENT: ?PR?DELAYS?MAIN
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?LEDTURNOFF?MAIN
+    SEGMENT: ?PR?_DIGCHOICE?MAIN
 
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?LEDTURNON?MAIN
-
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SEND2BYTE?MAIN
-
-Program Size: data=13.0 xdata=0 code=335
-LINK/LOCATE RUN COMPLETE.  4 WARNING(S),  0 ERROR(S)
+Program Size: data=9.0 xdata=0 code=553
+LINK/LOCATE RUN COMPLETE.  2 WARNING(S),  0 ERROR(S)
