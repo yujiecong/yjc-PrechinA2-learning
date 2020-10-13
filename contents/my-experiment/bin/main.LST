@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   MAIN                                                                  10/13/2020 18:17:59 PAGE 1   
+C51 COMPILER V9.00   MAIN                                                                  10/13/2020 19:30:34 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
@@ -8,37 +8,31 @@ COMPILER INVOKED BY: F:\keilc51\C51\BIN\C51.exe main.c
 line level    source
 
    1          #include "global.h"
-   2          #include "xpt2046.h"
-   3          #include "leddt.h"
-   4          void main()
-   5          {
-   6   1          uint temp, i = 0;
-   7   1          temp = getAD_Data(0xD4);
-   8   1          while (1)
+   2          #include "lcd1206.h"
+   3          void main()
+   4          {
+   5   1          uchar Disp[] = " HELLO WORLD ";
+   6   1          uchar i;
+   7   1          lcdInit();
+   8   1          for (i = 0; i < sizeof(Disp) / sizeof(uchar); i++)
    9   1          {
-  10   2              if (i == 50)
-  11   2              {
-  12   3                  temp = getAD_Data(0xD4);
-  13   3                  i = 0;
-  14   3              }
-  15   2              i++;
-  16   2              digDisplay(0, temp / 1000);
-  17   2              digDisplay(1, temp % 1000 / 100);
-  18   2              digDisplay(2, temp % 1000 % 100 / 10);
-  19   2              digDisplay(3, temp % 1000 % 100 % 10);
-  20   2          }
-  21   1      }
+  10   2              lcdWriteData(Disp[i]);
+  11   2          }
+  12   1          while (1)
+  13   1              ;
+  14   1      }
+*** WARNING C316 IN LINE 14 OF main.c: unterminated conditionals
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    475    ----
-   CONSTANT SIZE    =     17    ----
+   CODE SIZE        =    144    ----
+   CONSTANT SIZE    =     14    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----       2
+   DATA SIZE        =   ----      14
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

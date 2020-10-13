@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        10/13/2020  18:17:59  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/13/2020  19:30:34  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -12,7 +12,7 @@ MEMORY MODEL: SMALL
 INPUT MODULES INCLUDED:
   MAIN.OBJ (MAIN)
   STARTUP.OBJ (?C_STARTUP)
-  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\CONTENTS\MY-EXPERIMENT\LIB\C51S.LIB (?C?UIDIV)
+  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\CONTENTS\MY-EXPERIMENT\LIB\C51S.LIB (?C?COPY)
 
 
 LINK MAP OF MODULE:  CC-EXPERIMENT (MAIN)
@@ -23,52 +23,49 @@ LINK MAP OF MODULE:  CC-EXPERIMENT (MAIN)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     0002H     UNIT         _DATA_GROUP_
-            IDATA   000AH     0001H     UNIT         ?STACK
+            DATA    0008H     000EH     UNIT         _DATA_GROUP_
+            IDATA   0016H     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
-            CODE    0003H     00B6H     UNIT         ?PR?MAIN?MAIN
-            CODE    00B9H     0065H     UNIT         ?PR?_DIGDISPLAY?MAIN
-            CODE    011EH     0055H     UNIT         ?C?LIB_CODE
-            CODE    0173H     0051H     UNIT         ?PR?_DIGCHOICE?MAIN
-            CODE    01C4H     0024H     UNIT         ?PR?SPI_READ?MAIN
-            CODE    01E8H     001CH     UNIT         ?PR?_SPI_WRITE?MAIN
-            CODE    0204H     0019H     UNIT         ?PR?_READAD_DATA?MAIN
-            CODE    021DH     0011H     UNIT         ?CO?MAIN
-            CODE    022EH     000CH     UNIT         ?C_C51STARTUP
-            CODE    023AH     000BH     UNIT         ?PR?_DELAY?MAIN
-            CODE    0245H     0007H     UNIT         ?PR?DELAYS?MAIN
-            CODE    024CH     0004H     UNIT         ?PR?_GETAD_DATA?MAIN
+            CODE    0003H     00F6H     UNIT         ?C?LIB_CODE
+            CODE    00F9H     002AH     UNIT         ?PR?_LCD1602_DELAY1MS?MAIN
+            CODE    0123H     0027H     UNIT         ?PR?MAIN?MAIN
+            CODE    014AH     0019H     UNIT         ?PR?LCDINIT?MAIN
+            CODE    0163H     000EH     UNIT         ?CO?MAIN
+            CODE    0171H     000CH     UNIT         ?C_C51STARTUP
+            CODE    017DH     000BH     UNIT         ?PR?_DELAY?MAIN
+            CODE    0188H     000AH     UNIT         ?PR?_LCDWRITECOM?MAIN
+            CODE    0192H     000AH     UNIT         ?PR?_LCDWRITEDATA?MAIN
+            CODE    019CH     0007H     UNIT         ?PR?DELAYS?MAIN
 
 
 
 OVERLAY MAP OF MODULE:   CC-EXPERIMENT (MAIN)
 
 
-SEGMENT                          DATA_GROUP 
-  +--> CALLED SEGMENT          START    LENGTH
-----------------------------------------------
-?C_C51STARTUP                  -----    -----
+SEGMENT                              DATA_GROUP 
+  +--> CALLED SEGMENT              START    LENGTH
+--------------------------------------------------
+?C_C51STARTUP                      -----    -----
   +--> ?PR?MAIN?MAIN
 
-?PR?MAIN?MAIN                  0008H    0002H
-  +--> ?PR?_GETAD_DATA?MAIN
-  +--> ?PR?_DIGDISPLAY?MAIN
-
-?PR?_GETAD_DATA?MAIN           -----    -----
-  +--> ?PR?_READAD_DATA?MAIN
-
-BL51 BANKED LINKER/LOCATER V6.22                                                      10/13/2020  18:17:59  PAGE 2
-
-
-?PR?_READAD_DATA?MAIN          -----    -----
-  +--> ?PR?_SPI_WRITE?MAIN
-  +--> ?PR?SPI_READ?MAIN
-
-?PR?_DIGDISPLAY?MAIN           -----    -----
+?PR?MAIN?MAIN                      0008H    000EH
   +--> ?CO?MAIN
-  +--> ?PR?_DELAY?MAIN
+  +--> ?PR?LCDINIT?MAIN
+  +--> ?PR?_LCDWRITEDATA?MAIN
+
+?PR?LCDINIT?MAIN                   -----    -----
+  +--> ?PR?_LCDWRITECOM?MAIN
+
+?PR?_LCDWRITECOM?MAIN              -----    -----
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/13/2020  19:30:34  PAGE 2
+
+
+  +--> ?PR?_LCD1602_DELAY1MS?MAIN
+
+?PR?_LCDWRITEDATA?MAIN             -----    -----
+  +--> ?PR?_LCD1602_DELAY1MS?MAIN
 
 
 
@@ -77,15 +74,12 @@ SYMBOL TABLE OF MODULE:  CC-EXPERIMENT (MAIN)
   VALUE           TYPE          NAME
   ----------------------------------
 
-  -------         MODULE        ?C?UIDIV
-  C:011EH         PUBLIC        ?C?UIDIV
-  -------         ENDMOD        ?C?UIDIV
+  -------         MODULE        ?C?COPY
+  C:00D3H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?DELAYS?MAIN
 
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DIGCHOICE?MAIN
-
-Program Size: data=11.0 xdata=0 code=592
-LINK/LOCATE RUN COMPLETE.  2 WARNING(S),  0 ERROR(S)
+Program Size: data=23.0 xdata=0 code=419
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)
