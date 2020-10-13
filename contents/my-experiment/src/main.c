@@ -4,10 +4,17 @@
 
 void main()
 {
-    P0 = 0x00;
+
+    uchar i;
     while (1)
     {
-        choice88Led(0xfe, 0x00);
-        // send2Byte(0xfe, 0x01);
+        for (i = 0; i < 8; i++)
+        {
+            choice88Led(i, i, 1);
+            delayS();
+            choice88Led(i, i, 0);
+        }
+
+        /* code */
     }
 }

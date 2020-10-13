@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        10/12/2020  23:31:53  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/13/2020  13:40:07  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -30,16 +30,18 @@ LINK MAP OF MODULE:  CC-EXPERIMENT (MAIN)
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
             CODE    0003H     0041H     UNIT         ?PR?_SEND2BYTE?MAIN
-            CODE    0044H     0038H     UNIT         ?PR?_LEDNTURN?MAIN
-            CODE    007CH     0033H     UNIT         ?PR?_SENDBYTE?MAIN
-            CODE    00AFH     0032H     UNIT         ?PR?_CHOICE88LED?MAIN
-            CODE    00E1H     002DH     UNIT         ?PR?_LEDWATER?MAIN
-            CODE    010EH     0012H     UNIT         ?C?LIB_CODE
-            CODE    0120H     000CH     UNIT         ?PR?MAIN?MAIN
-            CODE    012CH     000CH     UNIT         ?C_C51STARTUP
-            CODE    0138H     000BH     UNIT         ?PR?_DELAY?MAIN
-            CODE    0143H     0004H     UNIT         ?PR?LEDTURNOFF?MAIN
-            CODE    0147H     0004H     UNIT         ?PR?LEDTURNON?MAIN
+            CODE    0044H     003AH     UNIT         ?PR?_CHOICE88LED?MAIN
+            CODE    007EH     0038H     UNIT         ?PR?_LEDNTURN?MAIN
+            CODE    00B6H     0033H     UNIT         ?PR?_SENDBYTE?MAIN
+            CODE    00E9H     002DH     UNIT         ?PR?_LEDWATER?MAIN
+            CODE    0116H     0026H     UNIT         ?PR?_SENDBYTE2?MAIN
+            CODE    013CH     001AH     UNIT         ?PR?MAIN?MAIN
+            CODE    0156H     0012H     UNIT         ?C?LIB_CODE
+            CODE    0168H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0174H     000BH     UNIT         ?PR?_DELAY?MAIN
+            CODE    017FH     0007H     UNIT         ?PR?DELAYS?MAIN
+            CODE    0186H     0004H     UNIT         ?PR?LEDTURNOFF?MAIN
+            CODE    018AH     0004H     UNIT         ?PR?LEDTURNON?MAIN
 
 
 
@@ -54,12 +56,17 @@ SEGMENT
 
 ?PR?MAIN?MAIN
   +--> ?PR?_CHOICE88LED?MAIN
+  +--> ?PR?DELAYS?MAIN
 
 ?PR?_CHOICE88LED?MAIN
-  +--> ?PR?_SENDBYTE?MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/13/2020  13:40:07  PAGE 2
 
 
-BL51 BANKED LINKER/LOCATER V6.22                                                      10/12/2020  23:31:53  PAGE 2
+  +--> ?PR?_SENDBYTE2?MAIN
+  +--> ?PR?_DELAY?MAIN
+
+?PR?DELAYS?MAIN
+  +--> ?PR?_DELAY?MAIN
 
 
 
@@ -69,7 +76,7 @@ SYMBOL TABLE OF MODULE:  CC-EXPERIMENT (MAIN)
   ----------------------------------
 
   -------         MODULE        ?C?IMUL
-  C:010EH         PUBLIC        ?C?IMUL
+  C:0156H         PUBLIC        ?C?IMUL
   -------         ENDMOD        ?C?IMUL
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
@@ -84,5 +91,8 @@ SYMBOL TABLE OF MODULE:  CC-EXPERIMENT (MAIN)
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_SEND2BYTE?MAIN
 
-Program Size: data=13.0 xdata=0 code=331
-LINK/LOCATE RUN COMPLETE.  4 WARNING(S),  0 ERROR(S)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDBYTE?MAIN
+
+Program Size: data=13.0 xdata=0 code=398
+LINK/LOCATE RUN COMPLETE.  5 WARNING(S),  0 ERROR(S)

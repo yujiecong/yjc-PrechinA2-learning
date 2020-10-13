@@ -5,23 +5,48 @@ sbit SRCLK = P3 ^ 6; //移位 时钟 输入 相当于 SH_CP
 //这里有冲突，因为reg52已经定义过RCLK了所以换一下
 sbit RCLK_ = P3 ^ 5; //输出 时钟 输入 相当于 ST_CP
 sbit SER = P3 ^ 4;   //输入的数据 例如0x0f 会输出并行的0000 1111
-sbit LED = P0 ^ 7;   //外接线的一个脚，用来把OE置0
 //
 
 void sendByte(uint dat);
-void choice88Led(uchar line, uchar column);
+void choice88Led(uchar line, uchar column, uchar on);
 void send2Byte(uchar dat1, uchar dat2);
-void choice88Led(uchar line, uchar column)
+void sendByte2(uchar dat);
+void sendByte2(uchar dat)
+{
+    uchar a;
+    SRCLK = 0;
+    RCLK_ = 0;
+    for (a = 0; a < 8; a++)
+    {
+        SER = dat >> 7;
+        dat <<= 1;
+
+        SRCLK = 1;
+        _nop_();
+        _nop_();
+        SRCLK = 0;
+    }
+
+    RCLK_ = 1;
+    _nop_();
+    _nop_();
+    RCLK_ = 0;
+}
+
+void choice88Led(uchar line, uchar column, uchar on)
 {
 
     uchar i, j = 0x01, l = 0x01;
     for (i = 0; i < line; i++)
-        j <<= 2;
-    for (i = 1; i < 8 - column; i++)
-        l <<= 2;
+        j <<= 1;
+    for (i = 0; i < column; i++)
+        l <<= 1;
+    P0 = on ? 0xff - l : P0;
 
-    P0 = 0xff-l;
-    sendByte(j);
+    //将595清零
+
+    sendByte2(j);
+    delay(100);
 }
 
 //dat1是P0 dat2 是hc595的输出
