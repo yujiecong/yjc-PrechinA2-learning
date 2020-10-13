@@ -6,6 +6,14 @@ uchar IrValue[6] = {0};
 void irInitInter0();
 void irLiesten();
 uchar irGetValue();
+//
+
+// void ReadIr() interrupt 0
+// {
+//     irLiesten();
+// }
+
+//
 uchar irGetValue()
 {
     return IrValue[2];

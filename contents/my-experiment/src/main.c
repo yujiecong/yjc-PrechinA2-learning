@@ -1,34 +1,15 @@
 #include "global.h"
+#include "xpt2046.h"
 #include "leddt.h"
-#include "infrared.h"
-#include "74HC595.h"
-#include "beep.h"
 void main()
 {
-    uchar i;
-    irInitInter0();
-
+    uint temp;
     while (1)
     {
-        uchar v = irGetValue();
-
-        // for (i = 0; i < 8; i++)
-        // {
-        //     digDisplay(i, 0x01 & v);
-        //     v = v >> 1;
-        // }
-
-        digDisplay(0, 0);
-        digDisplay(1, 16);
-        digDisplay(2, v / 16);
-        digDisplay(3, v % 16);
-        if (v == 0x16)
-        {
-            beeP(1000);
-        }
+        temp = getAD_Data(0x94);
+        digDisplay(0, temp / 1000);
+        digDisplay(1, temp % 1000 / 100);
+        digDisplay(2, temp % 1000 % 100 / 10);
+        digDisplay(3, temp % 1000 % 100 % 10);
     }
-}
-void ReadIr() interrupt 0
-{
-    irLiesten();
 }
