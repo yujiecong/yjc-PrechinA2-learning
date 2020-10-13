@@ -1,0 +1,85 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/13/2020  19:34:34  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\KEILC51\C51\BIN\BL51.EXE D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\CONTENTS\MY-EXPERIMENT\LIB\C51S.LIB, MAIN.OBJ, ST
+>> ARTUP.OBJ TO MAIN
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  MAIN.OBJ (MAIN)
+  STARTUP.OBJ (?C_STARTUP)
+  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\CONTENTS\MY-EXPERIMENT\LIB\C51S.LIB (?C?COPY)
+
+
+LINK MAP OF MODULE:  MAIN (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000EH     UNIT         _DATA_GROUP_
+            IDATA   0016H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     00F6H     UNIT         ?C?LIB_CODE
+            CODE    00F9H     002AH     UNIT         ?PR?_LCD1602_DELAY1MS?MAIN
+            CODE    0123H     0027H     UNIT         ?PR?MAIN?MAIN
+            CODE    014AH     0019H     UNIT         ?PR?LCDINIT?MAIN
+            CODE    0163H     000EH     UNIT         ?CO?MAIN
+            CODE    0171H     000CH     UNIT         ?C_C51STARTUP
+            CODE    017DH     000BH     UNIT         ?PR?_DELAY?MAIN
+            CODE    0188H     000AH     UNIT         ?PR?_LCDWRITECOM?MAIN
+            CODE    0192H     000AH     UNIT         ?PR?_LCDWRITEDATA?MAIN
+            CODE    019CH     0007H     UNIT         ?PR?DELAYS?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   MAIN (MAIN)
+
+
+SEGMENT                              DATA_GROUP 
+  +--> CALLED SEGMENT              START    LENGTH
+--------------------------------------------------
+?C_C51STARTUP                      -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                      0008H    000EH
+  +--> ?CO?MAIN
+  +--> ?PR?LCDINIT?MAIN
+  +--> ?PR?_LCDWRITEDATA?MAIN
+
+?PR?LCDINIT?MAIN                   -----    -----
+  +--> ?PR?_LCDWRITECOM?MAIN
+
+?PR?_LCDWRITECOM?MAIN              -----    -----
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/13/2020  19:34:34  PAGE 2
+
+
+  +--> ?PR?_LCD1602_DELAY1MS?MAIN
+
+?PR?_LCDWRITEDATA?MAIN             -----    -----
+  +--> ?PR?_LCD1602_DELAY1MS?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  MAIN (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C?COPY
+  C:00D3H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAYS?MAIN
+
+Program Size: data=23.0 xdata=0 code=419
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)
