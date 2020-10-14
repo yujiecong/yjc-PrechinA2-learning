@@ -1,0 +1,159 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/14/2020  18:38:48  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\KEILC51\C51\BIN\BL51.EXE D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB, MAIN.OBJ, STARTUP.OBJ 
+>> TO SNAKE
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  MAIN.OBJ (MAIN)
+  STARTUP.OBJ (?C_STARTUP)
+  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (?C?CLDPTR)
+  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (?C?CSTPTR)
+  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (?C?CSTOPTR)
+  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (?C?PSTOPTR)
+  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (MALLOC)
+  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (?C?PSTIDATA)
+  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (?C?PSTXDATA)
+  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (?C?PSTPDATA)
+  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (INIT_MEM)
+
+
+LINK MAP OF MODULE:  SNAKE (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0007H     UNIT         ?DT?INITSNAKE?MAIN
+            DATA    000FH     0005H     UNIT         ?DT?DRAWSNAKE?MAIN
+            DATA    0014H     0004H     UNIT         _DATA_GROUP_
+            IDATA   0018H     0001H     UNIT         ?STACK
+
+            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
+            XDATA   0000H     0008H     UNIT         ?XD?INIT_MEM
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     00C1H     UNIT         ?C?LIB_CODE
+            CODE    00C4H     00A8H     UNIT         ?PR?INITSNAKE?MAIN
+            CODE    016CH     009CH     UNIT         ?PR?_MALLOC?MALLOC
+            CODE    0208H     0065H     UNIT         ?PR?_DIGDISPLAY?MAIN
+            CODE    026DH     0051H     UNIT         ?PR?_DIGCHOICE?MAIN
+            CODE    02BEH     0041H     UNIT         ?PR?_SENDBYTEBY595?MAIN
+            CODE    02FFH     003FH     UNIT         ?PR?_CHOICE88LED?MAIN
+            CODE    033EH     003CH     UNIT         ?PR?_INIT_MEMPOOL?INIT_MEM
+            CODE    037AH     0033H     UNIT         ?PR?_SENDBYTE?MAIN
+            CODE    03ADH     002BH     UNIT         ?PR?MAIN?MAIN
+            CODE    03D8H     0026H     UNIT         ?PR?_SENDBYTETO595?MAIN
+            CODE    03FEH     0011H     UNIT         ?CO?MAIN
+            CODE    040FH     0010H     UNIT         ?PR?DRAWSNAKE?MAIN
+            CODE    041FH     000CH     UNIT         ?C_C51STARTUP
+            CODE    042BH     000BH     UNIT         ?PR?_DELAY?MAIN
+            CODE    0436H     000BH     UNIT         ?C_INITSEG
+            CODE    0441H     0007H     UNIT         ?PR?DELAYS?MAIN
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/14/2020  18:38:48  PAGE 2
+
+
+
+
+OVERLAY MAP OF MODULE:   SNAKE (MAIN)
+
+
+SEGMENT                              DATA_GROUP 
+  +--> CALLED SEGMENT              START    LENGTH
+--------------------------------------------------
+?C_C51STARTUP                      -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                      -----    -----
+  +--> ?PR?_MALLOC?MALLOC
+  +--> ?PR?_DIGDISPLAY?MAIN
+  +--> ?PR?_DELAY?MAIN
+
+?PR?_MALLOC?MALLOC                 0014H    0004H
+
+?PR?_DIGDISPLAY?MAIN               -----    -----
+  +--> ?CO?MAIN
+  +--> ?PR?_DELAY?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  SNAKE (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C?CLDPTR
+  C:0003H         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+  -------         MODULE        ?C?CSTPTR
+  C:001CH         PUBLIC        ?C?CSTPTR
+  -------         ENDMOD        ?C?CSTPTR
+
+  -------         MODULE        ?C?CSTOPTR
+  C:002EH         PUBLIC        ?C?CSTOPTR
+  -------         ENDMOD        ?C?CSTOPTR
+
+  -------         MODULE        ?C?PSTOPTR
+  C:0050H         PUBLIC        ?C?PSTOPTR
+  -------         ENDMOD        ?C?PSTOPTR
+
+  -------         MODULE        MALLOC
+  C:016CH         PUBLIC        _malloc
+  -------         ENDMOD        MALLOC
+
+  -------         MODULE        ?C?PSTIDATA
+  C:00A9H         PUBLIC        ?C?PSTIDATA
+  -------         ENDMOD        ?C?PSTIDATA
+
+  -------         MODULE        ?C?PSTXDATA
+  C:00B2H         PUBLIC        ?C?PSTXDATA
+  -------         ENDMOD        ?C?PSTXDATA
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/14/2020  18:38:48  PAGE 3
+
+
+  -------         MODULE        ?C?PSTPDATA
+  C:00BBH         PUBLIC        ?C?PSTPDATA
+  -------         ENDMOD        ?C?PSTPDATA
+
+  -------         MODULE        INIT_MEM
+  X:0000H         PUBLIC        __mem_avail__
+  C:033EH         PUBLIC        _init_mempool
+  -------         ENDMOD        INIT_MEM
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAYS?MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDBYTEBY595?MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDBYTE?MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INITSNAKE?MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DRAWSNAKE?MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DIGCHOICE?MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_INIT_MEMPOOL?INIT_MEM
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?C_INITSEG
+
+Program Size: data=25.0 xdata=8 code=1096
+LINK/LOCATE RUN COMPLETE.  8 WARNING(S),  0 ERROR(S)
