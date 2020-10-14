@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        10/14/2020  18:38:48  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/14/2020  22:22:48  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -12,15 +12,8 @@ MEMORY MODEL: SMALL
 INPUT MODULES INCLUDED:
   MAIN.OBJ (MAIN)
   STARTUP.OBJ (?C_STARTUP)
-  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (?C?CLDPTR)
-  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (?C?CSTPTR)
-  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (?C?CSTOPTR)
-  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (?C?PSTOPTR)
-  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (MALLOC)
-  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (?C?PSTIDATA)
-  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (?C?PSTXDATA)
-  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (?C?PSTPDATA)
-  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (INIT_MEM)
+  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (?C_INIT)
+  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\SNAKE\LIB\C51S.LIB (?C?ICALL)
 
 
 LINK MAP OF MODULE:  SNAKE (MAIN)
@@ -31,58 +24,74 @@ LINK MAP OF MODULE:  SNAKE (MAIN)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     0007H     UNIT         ?DT?INITSNAKE?MAIN
-            DATA    000FH     0005H     UNIT         ?DT?DRAWSNAKE?MAIN
-            DATA    0014H     0004H     UNIT         _DATA_GROUP_
-            IDATA   0018H     0001H     UNIT         ?STACK
-
-            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
-            XDATA   0000H     0008H     UNIT         ?XD?INIT_MEM
+            DATA    0008H     004AH     UNIT         ?DT?MAIN
+            DATA    0052H     0003H     UNIT         _DATA_GROUP_
+            IDATA   0055H     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
-            CODE    0003H     00C1H     UNIT         ?C?LIB_CODE
-            CODE    00C4H     00A8H     UNIT         ?PR?INITSNAKE?MAIN
-            CODE    016CH     009CH     UNIT         ?PR?_MALLOC?MALLOC
-            CODE    0208H     0065H     UNIT         ?PR?_DIGDISPLAY?MAIN
-            CODE    026DH     0051H     UNIT         ?PR?_DIGCHOICE?MAIN
-            CODE    02BEH     0041H     UNIT         ?PR?_SENDBYTEBY595?MAIN
-            CODE    02FFH     003FH     UNIT         ?PR?_CHOICE88LED?MAIN
-            CODE    033EH     003CH     UNIT         ?PR?_INIT_MEMPOOL?INIT_MEM
-            CODE    037AH     0033H     UNIT         ?PR?_SENDBYTE?MAIN
-            CODE    03ADH     002BH     UNIT         ?PR?MAIN?MAIN
-            CODE    03D8H     0026H     UNIT         ?PR?_SENDBYTETO595?MAIN
-            CODE    03FEH     0011H     UNIT         ?CO?MAIN
-            CODE    040FH     0010H     UNIT         ?PR?DRAWSNAKE?MAIN
-            CODE    041FH     000CH     UNIT         ?C_C51STARTUP
-            CODE    042BH     000BH     UNIT         ?PR?_DELAY?MAIN
-            CODE    0436H     000BH     UNIT         ?C_INITSEG
-            CODE    0441H     0007H     UNIT         ?PR?DELAYS?MAIN
-
-BL51 BANKED LINKER/LOCATER V6.22                                                      10/14/2020  18:38:48  PAGE 2
-
+            CODE    0003H     0115H     UNIT         ?PR?MOVESNAKE?MAIN
+            CODE    0118H     008CH     UNIT         ?C_C51STARTUP
+            CODE    01A4H     0065H     UNIT         ?PR?_DIGDISPLAY?MAIN
+            CODE    0209H     0053H     UNIT         ?C_INITSEG
+            CODE    025CH     0051H     UNIT         ?PR?_DIGCHOICE?MAIN
+            CODE    02ADH     0041H     UNIT         ?PR?_SENDBYTEBY595?MAIN
+            CODE    02EEH     0040H     UNIT         ?PR?_KEYLISTEN?MAIN
+            CODE    032EH     003FH     UNIT         ?PR?_CHOICE88LED?MAIN
+            CODE    036DH     003AH     UNIT         ?PR?INITSNAKE?MAIN
+            CODE    03A7H     0033H     UNIT         ?PR?_SENDBYTE?MAIN
+            CODE    03DAH     002AH     UNIT         ?PR?DRAWSNAKE?MAIN
+            CODE    0404H     0026H     UNIT         ?PR?_SENDBYTETO595?MAIN
+            CODE    042AH     0011H     UNIT         ?CO?MAIN
+            CODE    043BH     0010H     UNIT         ?PR?CTRLSNAKEUP?MAIN
+            CODE    044BH     000EH     UNIT         ?PR?MAIN?MAIN
+            CODE    0459H     000BH     UNIT         ?PR?_DELAY?MAIN
+            CODE    0464H     0007H     UNIT         ?PR?DELAYS?MAIN
+            CODE    046BH     0007H     UNIT         ?PR?INT0INITINTER0?MAIN
+            CODE    0472H     0007H     UNIT         ?PR?INT1INITINTER2?MAIN
+            CODE    0479H     0006H     UNIT         ?C?LIB_CODE
+            CODE    047FH     0004H     UNIT         ?PR?UP?MAIN
+            CODE    0483H     0003H     UNIT         ?PR?LISTENCRTL?MAIN
 
 
 
 OVERLAY MAP OF MODULE:   SNAKE (MAIN)
 
 
-SEGMENT                              DATA_GROUP 
-  +--> CALLED SEGMENT              START    LENGTH
---------------------------------------------------
-?C_C51STARTUP                      -----    -----
+SEGMENT                           DATA_GROUP 
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/14/2020  22:22:48  PAGE 2
+
+
+  +--> CALLED SEGMENT           START    LENGTH
+-----------------------------------------------
+?C_C51STARTUP                   -----    -----
   +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
 
-?PR?MAIN?MAIN                      -----    -----
-  +--> ?PR?_MALLOC?MALLOC
-  +--> ?PR?_DIGDISPLAY?MAIN
+?PR?MAIN?MAIN                   -----    -----
+  +--> ?PR?INITSNAKE?MAIN
+  +--> ?PR?DRAWSNAKE?MAIN
+  +--> ?PR?MOVESNAKE?MAIN
+  +--> ?PR?CTRLSNAKEUP?MAIN
+
+?PR?INITSNAKE?MAIN              -----    -----
+  +--> ?PR?INT0INITINTER0?MAIN
+
+?PR?DRAWSNAKE?MAIN              0052H    0001H
+  +--> ?PR?_CHOICE88LED?MAIN
+
+?PR?_CHOICE88LED?MAIN           -----    -----
+  +--> ?PR?_SENDBYTETO595?MAIN
   +--> ?PR?_DELAY?MAIN
 
-?PR?_MALLOC?MALLOC                 0014H    0004H
-
-?PR?_DIGDISPLAY?MAIN               -----    -----
-  +--> ?CO?MAIN
+?PR?MOVESNAKE?MAIN              -----    -----
   +--> ?PR?_DELAY?MAIN
+
+?PR?CTRLSNAKEUP?MAIN            -----    -----
+  +--> ?PR?UP?MAIN
+  +--> ?PR?_KEYLISTEN?MAIN
+
+?PR?_KEYLISTEN?MAIN             0052H    0003H
 
 
 
@@ -91,48 +100,16 @@ SYMBOL TABLE OF MODULE:  SNAKE (MAIN)
   VALUE           TYPE          NAME
   ----------------------------------
 
-  -------         MODULE        ?C?CLDPTR
-  C:0003H         PUBLIC        ?C?CLDPTR
-  -------         ENDMOD        ?C?CLDPTR
-
-  -------         MODULE        ?C?CSTPTR
-  C:001CH         PUBLIC        ?C?CSTPTR
-  -------         ENDMOD        ?C?CSTPTR
-
-  -------         MODULE        ?C?CSTOPTR
-  C:002EH         PUBLIC        ?C?CSTOPTR
-  -------         ENDMOD        ?C?CSTOPTR
-
-  -------         MODULE        ?C?PSTOPTR
-  C:0050H         PUBLIC        ?C?PSTOPTR
-  -------         ENDMOD        ?C?PSTOPTR
-
-  -------         MODULE        MALLOC
-  C:016CH         PUBLIC        _malloc
-  -------         ENDMOD        MALLOC
-
-  -------         MODULE        ?C?PSTIDATA
-  C:00A9H         PUBLIC        ?C?PSTIDATA
-  -------         ENDMOD        ?C?PSTIDATA
-
-  -------         MODULE        ?C?PSTXDATA
-  C:00B2H         PUBLIC        ?C?PSTXDATA
-  -------         ENDMOD        ?C?PSTXDATA
-
-BL51 BANKED LINKER/LOCATER V6.22                                                      10/14/2020  18:38:48  PAGE 3
-
-
-  -------         MODULE        ?C?PSTPDATA
-  C:00BBH         PUBLIC        ?C?PSTPDATA
-  -------         ENDMOD        ?C?PSTPDATA
-
-  -------         MODULE        INIT_MEM
-  X:0000H         PUBLIC        __mem_avail__
-  C:033EH         PUBLIC        _init_mempool
-  -------         ENDMOD        INIT_MEM
+  -------         MODULE        ?C?ICALL
+  C:0479H         PUBLIC        ?C?ICALL
+  C:047DH         PUBLIC        ?C?ICALL2
+  -------         ENDMOD        ?C?ICALL
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?DELAYS?MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INT1INITINTER2?MAIN
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_SENDBYTEBY595?MAIN
@@ -141,19 +118,16 @@ SYMBOL TABLE OF MODULE:  SNAKE (MAIN)
     SEGMENT: ?PR?_SENDBYTE?MAIN
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?INITSNAKE?MAIN
+    SEGMENT: ?PR?LISTENCRTL?MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/14/2020  22:22:48  PAGE 3
 
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?DRAWSNAKE?MAIN
+
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DIGCHOICE?MAIN
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_INIT_MEMPOOL?INIT_MEM
+    SEGMENT: ?PR?_DIGDISPLAY?MAIN
 
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?C_INITSEG
-
-Program Size: data=25.0 xdata=8 code=1096
-LINK/LOCATE RUN COMPLETE.  8 WARNING(S),  0 ERROR(S)
+Program Size: data=86.0 xdata=0 code=1158
+LINK/LOCATE RUN COMPLETE.  7 WARNING(S),  0 ERROR(S)

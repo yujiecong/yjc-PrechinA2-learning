@@ -1,15 +1,41 @@
+/****************************************************************
+**********************
+实验现象：下载程序后，操作 K3 按键使 D1 状态取反
+接线说明： (具体接线图可见开发攻略对应实验的“实验现象”章节)
+1，单片机-->LED&交通灯模块
+P20-->D1
+2，单片机-->独立按键模块
+P32-->K3
+注意事项：
+*****************************************************************
+**********************/
 #include "global.h"
-#include "lcd1206.h"
-#include "sb.c"
+#include "interruption.h" //此文件中定义了单片机的一些特殊功能寄存器
+#include "keyboard.h"
+uint count;
+
+void Int0Init()
+{
+    //设置 INT0
+    IT0 = 1; //跳变沿出发方式（下降沿）
+    EX0 = 1; //打开 INT0 的中断允许。
+    EA = 1;  //打开总中断
+}
+
 void main()
 {
-    uchar Disp[] = " HELLO WORLD ";
-    uchar i;
-    lcdInit();
-    for (i = 0; i < sizeof(Disp) / sizeof(uchar) - 1 i++)
-    {
-        lcdWriteData(Disp[i]);
-    }
+    int0InitInter0(); // 设置外部中断 0
     while (1)
-        ;
+    {
+        count += 1;
+    };
+}
+
+void Int0() interrupt 0 //外部中断 0 的中断函数
+{
+    if (count == 1000)
+    {
+        P2 = ~P2;
+        count = 0;
+    }
 }

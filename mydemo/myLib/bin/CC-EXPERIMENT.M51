@@ -1,9 +1,9 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        10/14/2020  12:57:13  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/14/2020  22:18:33  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
-F:\KEILC51\C51\BIN\BL51.EXE D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\MYLIB\LIB\C51S.LIB, MAIN.OBJ, SB.OBJ, STAR
->> TUP.OBJ TO CC-EXPERIMENT
+F:\KEILC51\C51\BIN\BL51.EXE D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\MYLIB\LIB\C51S.LIB, MAIN.OBJ, STARTUP.OBJ 
+>> TO CC-EXPERIMENT
 
 
 MEMORY MODEL: SMALL
@@ -11,9 +11,8 @@ MEMORY MODEL: SMALL
 
 INPUT MODULES INCLUDED:
   MAIN.OBJ (MAIN)
-  SB.OBJ (SB)
   STARTUP.OBJ (?C_STARTUP)
-  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\MYLIB\LIB\C51S.LIB (?C?COPY)
+  D:\CCREPOSITORY\YJC-C51-A2-LEARNING-MASTER\MYDEMO\MYLIB\LIB\C51S.LIB (?C?ICALL)
 
 
 LINK MAP OF MODULE:  CC-EXPERIMENT (MAIN)
@@ -24,115 +23,64 @@ LINK MAP OF MODULE:  CC-EXPERIMENT (MAIN)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     000EH     UNIT         _DATA_GROUP_
-            IDATA   0016H     0001H     UNIT         ?STACK
+            DATA    0008H     0003H     UNIT         ?DT?_KEYLISTEN?MAIN
+            DATA    000BH     0003H     UNIT         ?DT?MAIN
+            IDATA   000EH     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
-            CODE    0003H     00F6H     UNIT         ?C?LIB_CODE
-            CODE    00F9H     002AH     UNIT         ?PR?_LCD1602_DELAY1MS?MAIN
-            CODE    0123H     002AH     UNIT         ?PR?_LCD1602_DELAY1MS?SB
-            CODE    014DH     0027H     UNIT         ?PR?MAIN?MAIN
-            CODE    0174H     0019H     UNIT         ?PR?LCDINIT?MAIN
-            CODE    018DH     0019H     UNIT         ?PR?LCDINIT?SB
-            CODE    01A6H     000EH     UNIT         ?CO?MAIN
-            CODE    01B4H     000CH     UNIT         ?C_C51STARTUP
-            CODE    01C0H     000BH     UNIT         ?PR?_DELAY?MAIN
-            CODE    01CBH     000BH     UNIT         ?PR?_DELAY?SB
-            CODE    01D6H     000AH     UNIT         ?PR?_LCDWRITECOM?MAIN
-            CODE    01E0H     000AH     UNIT         ?PR?_LCDWRITEDATA?MAIN
-            CODE    01EAH     000AH     UNIT         ?PR?_LCDWRITECOM?SB
-            CODE    01F4H     000AH     UNIT         ?PR?_LCDWRITEDATA?SB
-            CODE    01FEH     0007H     UNIT         ?PR?DELAYS?MAIN
-            CODE    0205H     0007H     UNIT         ?PR?DELAYS?SB
+            CODE    0003H     0003H     ABSOLUTE     
+            CODE    0006H     0040H     UNIT         ?PR?_KEYLISTEN?MAIN
+            CODE    0046H     001CH     UNIT         ?PR?INT0?MAIN
+            CODE    0062H     000DH     UNIT         ?PR?MAIN?MAIN
+            CODE    006FH     000CH     UNIT         ?C_C51STARTUP
+            CODE    007BH     000BH     UNIT         ?PR?_DELAY?MAIN
+            CODE    0086H     0007H     UNIT         ?PR?DELAYS?MAIN
+            CODE    008DH     0007H     UNIT         ?PR?INT0INITINTER0?MAIN
+            CODE    0094H     0007H     UNIT         ?PR?INT1INITINTER2?MAIN
+            CODE    009BH     0007H     UNIT         ?PR?INT0INIT?MAIN
+            CODE    00A2H     0006H     UNIT         ?C?LIB_CODE
 
 
 
 OVERLAY MAP OF MODULE:   CC-EXPERIMENT (MAIN)
 
 
-SEGMENT                              DATA_GROUP 
-  +--> CALLED SEGMENT              START    LENGTH
---------------------------------------------------
-?C_C51STARTUP                      -----    -----
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
   +--> ?PR?MAIN?MAIN
 
-?PR?MAIN?MAIN                      0008H    000EH
-  +--> ?CO?MAIN
-BL51 BANKED LINKER/LOCATER V6.22                                                      10/14/2020  12:57:13  PAGE 2
-
-
-  +--> ?PR?LCDINIT?MAIN
-  +--> ?PR?_LCDWRITEDATA?MAIN
-
-?PR?LCDINIT?MAIN                   -----    -----
-  +--> ?PR?_LCDWRITECOM?MAIN
-
-?PR?_LCDWRITECOM?MAIN              -----    -----
-  +--> ?PR?_LCD1602_DELAY1MS?MAIN
-
-?PR?_LCDWRITEDATA?MAIN             -----    -----
-  +--> ?PR?_LCD1602_DELAY1MS?MAIN
-
-
-
-IGNORED SYMBOLS:
-   DELAYS
-   LCDINIT
-   _DELAY
-   _LCD1602_DELAY1MS
-   _LCDWRITECOM
-   _LCDWRITEDATA
+?PR?MAIN?MAIN
+  +--> ?PR?INT0INITINTER0?MAIN
 
 
 
 SYMBOL TABLE OF MODULE:  CC-EXPERIMENT (MAIN)
 
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/14/2020  22:18:33  PAGE 2
+
+
   VALUE           TYPE          NAME
   ----------------------------------
 
-  -------         MODULE        ?C?COPY
-  C:00D3H         PUBLIC        ?C?COPY
-  -------         ENDMOD        ?C?COPY
-
-*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
-    SYMBOL:  LCDINIT
-    MODULE:  SB.OBJ (SB)
-
-*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
-    SYMBOL:  _LCDWRITEDATA
-    MODULE:  SB.OBJ (SB)
-
-*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
-    SYMBOL:  _LCDWRITECOM
-    MODULE:  SB.OBJ (SB)
-
-*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
-    SYMBOL:  _LCD1602_DELAY1MS
-    MODULE:  SB.OBJ (SB)
-
-*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
-    SYMBOL:  DELAYS
-    MODULE:  SB.OBJ (SB)
-
-*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
-    SYMBOL:  _DELAY
-    MODULE:  SB.OBJ (SB)
-
-BL51 BANKED LINKER/LOCATER V6.22                                                      10/14/2020  12:57:13  PAGE 3
-
+  -------         MODULE        ?C?ICALL
+  C:00A2H         PUBLIC        ?C?ICALL
+  C:00A6H         PUBLIC        ?C?ICALL2
+  -------         ENDMOD        ?C?ICALL
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?DELAYS?MAIN
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?DELAYS?SB
+    SEGMENT: ?PR?INT1INITINTER2?MAIN
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_LCDWRITEDATA?SB
+    SEGMENT: ?PR?_KEYLISTEN?MAIN
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?LCDINIT?SB
+    SEGMENT: ?PR?INT0INIT?MAIN
 
-Program Size: data=23.0 xdata=0 code=524
-LINK/LOCATE RUN COMPLETE.  4 WARNING(S),  6 ERROR(S)
+Program Size: data=15.0 xdata=0 code=168
+LINK/LOCATE RUN COMPLETE.  4 WARNING(S),  0 ERROR(S)

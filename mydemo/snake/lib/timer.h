@@ -1,7 +1,17 @@
 #ifndef _TIMER_H
 #define _TIMER_H
 #include "global.h"
+#define OP 1 / 11.0592
 //中断号1
+int computeTH0(uint us)
+{
+    //
+    return (65536 - ((int)(us / (OP * 12)))) / 256;
+}
+int computeTL0(uint us)
+{
+    return (65536 - ((int)(us / (OP * 12)))) % 256;
+}
 void timer0Init()
 {
     TMOD |= 0X01; //选择为定时器0模式，工作方式1，仅用TR0打开启动。

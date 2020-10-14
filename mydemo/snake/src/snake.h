@@ -1,56 +1,157 @@
 #ifndef _SNAKE_H
 #define _SNAKE_H
 #include "../lib/global.h"
-
+#include "../lib/interruption.h"
 #include "../lib/74hc595.h"
+#include "../lib/keyboard.h"
 #define SNAKELENG 3
-//
-
-struct snakeNode
+#define UP 1
+#define DOWN 2
+#define LEFT 3
+#define RIGHT 4
+struct pos
 {
-    uchar x, y;
-    struct snakeNode *nextBody;
+    uchar sy, sx;
 };
 //
-struct snakeNode *initSnake();
-void printSnake(struct snakeNode *head);
-void drawSnake(struct snakeNode s);
+uchar map[8][8] = {0}; //记录snake坐标数据
+struct pos snakePos[3] = {{0, 0}, {0, 1}, {0, 2}};
+uchar direction = LEFT;
+static uint interruptionCount = 0;
+//蛇神位置
+
 //
-
-struct snakeNode *initSnake()
+void initSnake();
+void printSnake(struct snakeNode *head);
+void drawSnake();
+void listenCrtl();
+void ctrlSnakeUp();
+void up();
+//
+void up()
 {
-    struct snakeNode *snakeHead = (struct snakeNode *)malloc(sizeof(struct snakeNode));
-    struct snakeNode *snakeTail = (struct snakeNode *)malloc(sizeof(struct snakeNode));
+    direction = UP;
+}
+void listenCrtl()
+{
+    ctrlSnakeUp();
+}
+void ctrlSnakeUp()
+{
+    interruptionCount = 0;
+    keyListen(up, 1);
+}
+void moveSnake()
+{
     uchar i;
-    //if fail 。。。
-    snakeTail->x = 0;
-    snakeTail->y = 0;
-    snakeTail->nextBody = NULL;
-
-    //头插法
-    for (i = 1; i < SNAKELENG; i++)
+    switch (direction)
     {
-        snakeHead = (struct snakeNode *)malloc(sizeof(struct snakeNode));
-        snakeHead->nextBody = snakeTail;
-        snakeHead->x = i;
-        snakeHead->y = 0;
-        snakeTail = snakeHead;
+    case UP:
+        map[snakePos[0].sy][snakePos[0].sx] = 0;
+        for (i = 0; i < SNAKELENG; i++)
+        {
+
+            snakePos[i].sy += 1;
+            if (snakePos[i].sx % 8 == 0)
+            {
+                snakePos[i].sx = 0;
+            }
+            if (snakePos[i].sy % 8 == 0)
+            {
+                snakePos[i].sy = 0;
+            }
+            map[snakePos[i].sy][snakePos[i].sx] = 1;
+        }
+        break;
+    case LEFT:
+        map[snakePos[0].sy][snakePos[0].sx] = 0;
+        for (i = 0; i < SNAKELENG; i++)
+        {
+
+            snakePos[i].sx += 1;
+            if (snakePos[i].sx % 8 == 0)
+            {
+                snakePos[i].sx = 0;
+            }
+            if (snakePos[i].sy % 8 == 0)
+            {
+                snakePos[i].sy = 0;
+            }
+            map[snakePos[i].sy][snakePos[i].sx] = 1;
+        }
+        break;
+    case RIGHT:
+        map[snakePos[0].sy][snakePos[0].sx] = 0;
+        for (i = 0; i < SNAKELENG; i++)
+        {
+
+            snakePos[i].sx -= 1;
+            if (snakePos[i].sx % 8 == 0)
+            {
+                snakePos[i].sx = 0;
+            }
+            if (snakePos[i].sy % 8 == 0)
+            {
+                snakePos[i].sy = 0;
+            }
+            map[snakePos[i].sy][snakePos[i].sx] = 1;
+        }
+        break;
+    case DOWN:
+        map[snakePos[0].sy][snakePos[0].sx] = 0;
+        for (i = 0; i < SNAKELENG; i++)
+        {
+
+            snakePos[i].sy -= 1;
+            if (snakePos[i].sx % 8 == 0)
+            {
+                snakePos[i].sx = 0;
+            }
+            if (snakePos[i].sy % 8 == 0)
+            {
+                snakePos[i].sy = 0;
+            }
+            map[snakePos[i].sy][snakePos[i].sx] = 1;
+        }
+        break;
+    default:
+        break;
     }
-    //free
-    return snakeTail;
+
+    delay(5000);
 }
 
-void drawSnake(struct snakeNode s)
+void initSnake()
 {
-    uchar i;
-    for (i = 0; i < 3; i++)
+    uchar i, j;
+    for (i = 0; i < 8; i++)
     {
-        choice88Led(s.y, s.x, 1);
-        // struct snakeNode *t = s.nextBody;
+        for (j = 0; j < 8; j++)
+        {
+            map[i][j] = 0;
+        }
     }
-    // while (s != NULL)
-    // {
-    // }
+    int0InitInter0();
+
+    for (i = 0; i < SNAKELENG; i++)
+    {
+        map[snakePos[i].sy][snakePos[i].sx] = 1;
+    }
+}
+
+void drawSnake()
+{
+    uchar i, j;
+    for (i = 0; i < 8; i++)
+    {
+        for (j = 0; j < 8; j++)
+        {
+            if (map[i][j] == 1)
+            {
+                choice88Led(i, j, 1);
+            }
+        }
+    }
 }
 
 #endif

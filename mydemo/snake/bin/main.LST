@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   MAIN                                                                  10/14/2020 18:38:48 PAGE 1   
+C51 COMPILER V9.00   MAIN                                                                  10/14/2020 22:22:47 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
@@ -9,62 +9,30 @@ line level    source
 
    1          #include "snake.h"
    2          #include "../lib/leddt.h"
-   3          struct test
-   4          {
-   5              uchar showdata;
-   6          };
-   7          
-   8          void main()
-   9          {
-  10   1      
-  11   1          struct test *testPointer = (struct test *)malloc(sizeof(struct test));
-  12   1          testPointer->showdata = 3;
-  13   1          while (1)
-  14   1          {
-  15   2              digDisplay(0, testPointer->showdata);
-  16   2              delay(1000);
-  17   2              digDisplay(1, 3);
-  18   2          }
-  19   1      
-  20   1          // struct snakeNode *ccSnake;
-  21   1          // uchar i = 0;
-  22   1          // ccSnake = initSnake();
-  23   1          // ccSnake->x = 3;
-  24   1          // while (1)
-  25   1          // {
-  26   1          //     ccSnake = initSnake();
-  27   1          //     while (ccSnake != NULL)
-  28   1          //     {
-  29   1          //         digDisplay(i, ccSnake->x);
-  30   1          //         ccSnake = ccSnake->nextBody;
-  31   1          //         i++;
-  32   1          //     }
-  33   1      
-  34   1          //     // digDisplay(1, 3);
-  35   1          //     // ccSnake = initSnake();
-  36   1          //     // for (i = 0; i < 8; i++)
-  37   1          //     // {
-  38   1      
-  39   1          //     //     // ccSnake = ccSnake->nextBody;
-  40   1          //     // }
-  41   1          //     // for (i = 0; i < 8; i++)
-  42   1          //     // {
-  43   1          //     //     digDisplay(i, (&ccSnake)->x);
-  44   1          //     // }
-  45   1      
-  46   1          //     // choice88Led(1, 1, 1);
-  47   1          // }
-  48   1      }
+   3          #include "../lib/interruption.h"
+   4          #include "../lib/global.h"
+   5          #include "../lib/keyboard.h"
+   6          void main()
+   7          {
+   8   1      
+   9   1          initSnake();
+  10   1          //设置 INT0
+  11   1          while (1)
+  12   1          {
+  13   2              /* code */
+  14   2              drawSnake();
+  15   2              moveSnake();
+  16   2              ctrlSnakeUp();
+  17   2          }
+  18   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    644    ----
+   CODE SIZE        =    909    ----
    CONSTANT SIZE    =     17    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-C51 COMPILER V9.00   MAIN                                                                  10/14/2020 18:38:48 PAGE 2   
-
-   DATA SIZE        =   ----      12
+   DATA SIZE        =     74       4
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

@@ -1,24 +1,35 @@
 #ifndef _KEYBOARD_H
 #define _KEYBOARD_H
-#include"global.h"
+#include "global.h"
 sbit k1 = P3 ^ 1;
-sbit k2 = P3 ^ 0; 
-sbit k3 = P3 ^ 2; 
-sbit k4 = P3 ^ 3; 
+sbit k2 = P3 ^ 0;
+sbit k3 = P3 ^ 2;
+sbit k4 = P3 ^ 3;
 uchar keyValue;
-void keyListen(void (*listenFunc)(),uchar keyn); //无参函数作为函参
+void keyListen(void (*listenFunc)(), uchar keyn); //无参函数作为函参
 
-void keyListen(void(*listenFunc)(), uchar keyn)
+void keyListen(void (*listenFunc)(), uchar keyn)
 {
-    uchar t=P3<<4;
-    if(t!=0xf0){
-        switch(t){
-            case(0xd0):keyValue=1;break;
-            case(0xe0):keyValue=2;break;
-            case(0xb0):keyValue=3;break;
-            case(0x70):keyValue=4;break;
+    uchar t = P3 << 4;
+    if (t != 0xf0)
+    {
+        switch (t)
+        {
+        case (0xd0):
+            keyValue = 1;
+            break;
+        case (0xe0):
+            keyValue = 2;
+            break;
+        case (0xb0):
+            keyValue = 3;
+            break;
+        case (0x70):
+            keyValue = 4;
+            break;
         }
-        if(keyValue==keyn){
+        if (keyValue == keyn)
+        {
             listenFunc();
         }
     }

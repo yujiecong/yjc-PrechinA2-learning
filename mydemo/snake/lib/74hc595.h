@@ -11,6 +11,8 @@ void sendByte(uint dat);
 void choice88Led(uchar line, uchar column, uchar on);
 void sendByteBy595(uchar dat1, uchar dat2);
 void sendByteTo595(uchar dat);
+
+
 void sendByteTo595(uchar dat)
 {
     uchar a;
