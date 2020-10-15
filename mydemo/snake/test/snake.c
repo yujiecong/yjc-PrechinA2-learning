@@ -60,6 +60,5 @@ void printSnake(struct snakeNode *s)
 int main()
 {
 
-    struct snakeNode *ccSnake = initSnake();
-    printSnake(ccSnake);
+    printf("%d", -61 % 3);
 }

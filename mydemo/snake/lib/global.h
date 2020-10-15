@@ -2,6 +2,7 @@
 #define _GLOBAL_H
 #include "reg52.h"
 #include <stdio.h>
+
 #include <stdlib.h>
 #include <intrins.h>
 typedef unsigned int uint; //对数据类型进行声明定义

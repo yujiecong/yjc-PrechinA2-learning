@@ -7,12 +7,14 @@ void main()
 {
 
     initSnake();
+
     //设置 INT0
+    createFood();
     while (1)
     {
         /* code */
-        drawSnake();
+
+        ctrlSnake();
         moveSnake();
-        ctrlSnakeUp();
     }
 }
