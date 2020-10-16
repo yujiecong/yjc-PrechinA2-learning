@@ -3,7 +3,7 @@
 #include "../lib/global.h"
 #include "../lib/74hc595.h"
 #include "../lib/keyboard.h"
-
+#include "../lib/infrared.h"
 #define UP 1
 #define DOWN 2
 #define LEFT 3
@@ -23,6 +23,7 @@ uchar turnFlag = 0;
 uchar vertical = 0;
 uchar horizontal = 1;
 uchar food = 0;
+
 //蛇神位置
 
 //
@@ -102,13 +103,27 @@ void right()
         direction = RIGHT;
     }
 }
-
+// - 关机键-0x45
+// - MODE-0x46
+// - 静音键-0x47
+// - 暂停/播放-0x44
+// - 往前退-0x40
+// - 往后退-0x43
+// - EQ-0x07
+// - vol↓-0x15
+// - vol↑-0x09
+// - 0-0x16
+// - 1-0x0c
+// - 2-0x18
+// - 3-0x5e
+// - 4-0x08
+// - 5-0x1c
+// - 6-0x5a
+// - 7-0x42
+// - 8-0x52
+// - 9-0x4a
 void ctrlSnake()
 {
-    keyListen(up, 1);
-    keyListen(down, 2);
-    keyListen(left, 3);
-    keyListen(right, 4);
 }
 void moveSnake()
 {
@@ -245,7 +260,9 @@ void moveSnake()
 
 void initSnake()
 {
+
     uchar i, j;
+    irInitInter0();
     for (i = 0; i < 8; i++)
     {
         for (j = 0; j < 8; j++)
@@ -280,33 +297,84 @@ void draw()
     }
 }
 
-// void ctrlDirection() interrupt 0
-// {
-//     if (k1 == 0)
-//     {
-//         delay(100);
-//         if (k1 == 0)
-//         {
-//         }
-//     }
-//     else if (k2 == 0)
-//     {
-//         delay(100);
-//         if (k2 == 0)
-//         {
-//         }
-//     }
-//     else if (k3 == 0)
-//     {
-//         delay(100);
-//         if (k3 == 0)
-//     }
-// }
-// else if (k4 == 0)
-// {
-//     delay(100);
-//     if (k4 == 0)
-//     {
-//     }
-// }
+void irl() interrupt 0
+{
+    uchar j, k;
+    uint err;
+    uchar Time = 0;
+
+    delay(700);    //7ms
+    if (IRIN == 0) //确认是否真的接收到正确的信号
+    {
+
+        err = 1000; //1000*10us=10ms,超过说明接收到错误的信号
+        /*当两个条件都为真是循环，如果有一个条件为假的时候跳出循环，免得程序出错的时
+		侯，程序死在这里*/
+        while ((IRIN == 0) && (err > 0)) //等待前面9ms的低电平过去
+        {
+            delay(1);
+            err--;
+        }
+        if (IRIN == 1) //如果正确等到9ms低电平
+        {
+            err = 500;
+            while ((IRIN == 1) && (err > 0)) //等待4.5ms的起始高电平过去
+            {
+                delay(1);
+                err--;
+            }
+            for (k = 0; k < 4; k++) //共有4组数据
+            {
+                for (j = 0; j < 8; j++) //接收一组数据
+                {
+
+                    err = 60;
+                    while ((IRIN == 0) && (err > 0)) //等待信号前面的560us低电平过去
+                    {
+                        delay(1);
+                        err--;
+                    }
+                    err = 500;
+                    while ((IRIN == 1) && (err > 0)) //计算高电平的时间长度。
+                    {
+                        delay(10); //0.1ms
+                        Time++;
+                        err--;
+                        if (Time > 30)
+                        {
+                            return;
+                        }
+                    }
+                    IrValue[k] >>= 1; //k表示第几组数据
+                    if (Time >= 8)    //如果高电平出现大于565us，那么是1
+                    {
+                        IrValue[k] |= 0x80;
+                    }
+                    Time = 0; //用完时间要重新赋值
+                }
+            }
+        }
+        if (IrValue[2] != ~IrValue[3])
+        {
+            return;
+        }
+        switch (IrValue[2])
+        {
+        case 0x08:
+            left();
+            break;
+        case 0x5a:
+            right();
+            break;
+        case 0x18:
+            up();
+            break;
+        case 0x52:
+            down();
+            break;
+        default:
+            break;
+        }
+    }
+}
 #endif

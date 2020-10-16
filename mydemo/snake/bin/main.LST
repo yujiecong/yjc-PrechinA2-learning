@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   MAIN                                                                  10/16/2020 00:51:47 PAGE 1   
+C51 COMPILER V9.00   MAIN                                                                  10/16/2020 13:13:35 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
@@ -8,33 +8,31 @@ COMPILER INVOKED BY: F:\keilc51\C51\BIN\C51.exe main.c
 line level    source
 
    1          #include "snake.h"
-   2          #include "../lib/leddt.h"
-   3          #include "../lib/interruption.h"
-   4          #include "../lib/global.h"
-   5          #include "../lib/keyboard.h"
-   6          void main()
-   7          {
-   8   1      
-   9   1          initSnake();
-  10   1      
-  11   1          //设置 INT0
-  12   1          createFood();
-  13   1          while (1)
-  14   1          {
-  15   2              /* code */
-  16   2      
-  17   2              ctrlSnake();
-  18   2              moveSnake();
-  19   2          }
-  20   1      }
+   2          #include "../lib/global.h"
+   3          #include "../lib/keyboard.h"
+   4          
+   5          void main()
+   6          {
+   7   1      
+   8   1          initSnake();
+   9   1          //设置 INT0
+  10   1          createFood();
+  11   1          while (1)
+  12   1          {
+  13   2              /* code */
+  14   2      
+  15   2              ctrlSnake();
+  16   2              moveSnake();
+  17   2          }
+  18   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   1535    ----
-   CONSTANT SIZE    =     17    ----
+   CODE SIZE        =   1776    ----
+   CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     88       7
+   DATA SIZE        =     94      11
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
