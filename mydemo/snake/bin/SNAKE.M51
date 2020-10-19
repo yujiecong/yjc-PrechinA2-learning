@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        10/16/2020  13:13:35  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/19/2020  18:56:27  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -28,12 +28,12 @@ LINK MAP OF MODULE:  SNAKE (MAIN)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     005EH     UNIT         ?DT?MAIN
-            DATA    0066H     0005H     UNIT         _DATA_GROUP_
-            DATA    006BH     0004H     UNIT         ?DT?RAND?RAND
-            DATA    006FH     0003H     UNIT         ?DT?_KEYLISTEN?MAIN
-            DATA    0072H     0002H     UNIT         ?DT?IRLIESTEN?MAIN
-            IDATA   0074H     0001H     UNIT         ?STACK
+            DATA    0008H     0060H     UNIT         ?DT?MAIN
+            DATA    0068H     0005H     UNIT         _DATA_GROUP_
+            DATA    006DH     0004H     UNIT         ?DT?RAND?RAND
+            DATA    0071H     0003H     UNIT         ?DT?_KEYLISTEN?MAIN
+            DATA    0074H     0002H     UNIT         ?DT?IRLIESTEN?MAIN
+            IDATA   0076H     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
@@ -43,39 +43,43 @@ LINK MAP OF MODULE:  SNAKE (MAIN)
             CODE    03C7H     00BDH     UNIT         ?PR?IRLIESTEN?MAIN
             CODE    0484H     00B3H     UNIT         ?C?LIB_CODE
             CODE    0537H     008CH     UNIT         ?C_C51STARTUP
-            CODE    05C3H     0073H     UNIT         ?C_INITSEG
-            CODE    0636H     0061H     UNIT         ?PR?CREATEFOOD?MAIN
-            CODE    0697H     004DH     UNIT         ?PR?RAND?RAND
-            CODE    06E4H     0041H     UNIT         ?PR?_SENDBYTEBY595?MAIN
-            CODE    0725H     0040H     UNIT         ?PR?_KEYLISTEN?MAIN
-            CODE    0765H     003FH     UNIT         ?PR?_CHOICE88LED?MAIN
-            CODE    07A4H     003FH     UNIT         ?PR?INITSNAKE?MAIN
-            CODE    07E3H     0033H     UNIT         ?PR?_SENDBYTE?MAIN
-            CODE    0816H     0030H     UNIT         ?PR?DRAW?MAIN
-            CODE    0846H     0026H     UNIT         ?PR?_SENDBYTETO595?MAIN
-            CODE    086CH     0016H     UNIT         ?PR?UP?MAIN
-            CODE    0882H     0016H     UNIT         ?PR?DOWN?MAIN
-            CODE    0898H     0016H     UNIT         ?PR?LEFT?MAIN
-            CODE    08AEH     0016H     UNIT         ?PR?RIGHT?MAIN
-            CODE    08C4H     000FH     UNIT         ?PR?_DELAY?MAIN
-            CODE    08D3H     000EH     UNIT         ?PR?MAIN?MAIN
-BL51 BANKED LINKER/LOCATER V6.22                                                      10/16/2020  13:13:35  PAGE 2
+            CODE    05C3H     0077H     UNIT         ?C_INITSEG
+            CODE    063AH     0061H     UNIT         ?PR?CREATEFOOD?MAIN
+            CODE    069BH     004DH     UNIT         ?PR?RAND?RAND
+            CODE    06E8H     0041H     UNIT         ?PR?_SENDBYTEBY595?MAIN
+            CODE    0729H     0040H     UNIT         ?PR?_KEYLISTEN?MAIN
+            CODE    0769H     003FH     UNIT         ?PR?_CHOICE88LED?MAIN
+            CODE    07A8H     003FH     UNIT         ?PR?INITSNAKE?MAIN
+            CODE    07E7H     0033H     UNIT         ?PR?_SENDBYTE?MAIN
+            CODE    081AH     0030H     UNIT         ?PR?DRAW?MAIN
+            CODE    084AH     002AH     UNIT         ?PR?_LCD1602_DELAY1MS?MAIN
+            CODE    0874H     0026H     UNIT         ?PR?_SENDBYTETO595?MAIN
+            CODE    089AH     0019H     UNIT         ?PR?LCDINIT?MAIN
+            CODE    08B3H     0016H     UNIT         ?PR?UP?MAIN
+            CODE    08C9H     0016H     UNIT         ?PR?DOWN?MAIN
+            CODE    08DFH     0016H     UNIT         ?PR?LEFT?MAIN
+            CODE    08F5H     0016H     UNIT         ?PR?RIGHT?MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/19/2020  18:56:27  PAGE 2
 
 
-            CODE    08E1H     0009H     UNIT         ?PR?IRINITINTER0?MAIN
-            CODE    08EAH     0007H     UNIT         ?PR?DELAYS?MAIN
-            CODE    08F1H     0003H     UNIT         ?PR?IRGETVALUE?MAIN
-            CODE    08F4H     0001H     UNIT         ?PR?CTRLSNAKE?MAIN
+            CODE    090BH     000FH     UNIT         ?PR?_DELAY?MAIN
+            CODE    091AH     000EH     UNIT         ?PR?MAIN?MAIN
+            CODE    0928H     000AH     UNIT         ?PR?_LCDWRITECOM?MAIN
+            CODE    0932H     000AH     UNIT         ?PR?_LCDWRITEDATA?MAIN
+            CODE    093CH     0009H     UNIT         ?PR?IRINITINTER0?MAIN
+            CODE    0945H     0007H     UNIT         ?PR?DELAYS?MAIN
+            CODE    094CH     0003H     UNIT         ?PR?IRGETVALUE?MAIN
+            CODE    094FH     0001H     UNIT         ?PR?CTRLSNAKE?MAIN
 
 
 
 OVERLAY MAP OF MODULE:   SNAKE (MAIN)
 
 
-SEGMENT                           DATA_GROUP 
-  +--> CALLED SEGMENT           START    LENGTH
------------------------------------------------
-?PR?IRL?MAIN                    0066H    0002H
+SEGMENT                              DATA_GROUP 
+  +--> CALLED SEGMENT              START    LENGTH
+--------------------------------------------------
+?PR?IRL?MAIN                       0068H    0002H
   +--> ?PR?_DELAY?MAIN
   +--> ?PR?LEFT?MAIN
   +--> ?PR?RIGHT?MAIN
@@ -84,43 +88,43 @@ SEGMENT                           DATA_GROUP
 
 *** NEW ROOT ***************************************************
 
-?C_C51STARTUP                   -----    -----
+?C_C51STARTUP                      -----    -----
   +--> ?PR?MAIN?MAIN
   +--> ?C_INITSEG
 
-?PR?MAIN?MAIN                   -----    -----
+?PR?MAIN?MAIN                      -----    -----
   +--> ?PR?INITSNAKE?MAIN
   +--> ?PR?CREATEFOOD?MAIN
   +--> ?PR?CTRLSNAKE?MAIN
   +--> ?PR?MOVESNAKE?MAIN
 
-?PR?INITSNAKE?MAIN              -----    -----
+?PR?INITSNAKE?MAIN                 -----    -----
   +--> ?PR?IRINITINTER0?MAIN
 
-?PR?CREATEFOOD?MAIN             006AH    0001H
+?PR?CREATEFOOD?MAIN                006CH    0001H
   +--> ?PR?RAND?RAND
 
-?PR?MOVESNAKE?MAIN              0068H    0002H
+?PR?MOVESNAKE?MAIN                 006AH    0002H
   +--> ?PR?CREATEFOOD?MAIN
   +--> ?PR?DRAW?MAIN
   +--> ?PR?_DELAY?MAIN
 
-?PR?DRAW?MAIN                   006AH    0001H
+?PR?DRAW?MAIN                      006CH    0001H
   +--> ?PR?_CHOICE88LED?MAIN
 
-?PR?_CHOICE88LED?MAIN           -----    -----
+?PR?_CHOICE88LED?MAIN              -----    -----
   +--> ?PR?_SENDBYTETO595?MAIN
   +--> ?PR?_DELAY?MAIN
 
 
 
 SYMBOL TABLE OF MODULE:  SNAKE (MAIN)
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/19/2020  18:56:27  PAGE 3
+
+
 
   VALUE           TYPE          NAME
   ----------------------------------
-
-BL51 BANKED LINKER/LOCATER V6.22                                                      10/16/2020  13:13:35  PAGE 3
-
 
   -------         MODULE        ?C?SCDIV
   C:0484H         PUBLIC        ?C?SCDIV
@@ -136,9 +140,9 @@ SYMBOL TABLE OF MODULE:  SNAKE (MAIN)
   -------         ENDMOD        ?C?ICALL
 
   -------         MODULE        RAND
-  D:006BH         PUBLIC        ?SRAND?BYTE
-  C:0697H         PUBLIC        RAND
-  C:06D9H         PUBLIC        _SRAND
+  D:006DH         PUBLIC        ?SRAND?BYTE
+  C:069BH         PUBLIC        RAND
+  C:06DDH         PUBLIC        _SRAND
   -------         ENDMOD        RAND
 
   -------         MODULE        ?C?UIDIV
@@ -163,5 +167,11 @@ SYMBOL TABLE OF MODULE:  SNAKE (MAIN)
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?IRLIESTEN?MAIN
 
-Program Size: data=117.0 xdata=0 code=2293
-LINK/LOCATE RUN COMPLETE.  6 WARNING(S),  0 ERROR(S)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDWRITEDATA?MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDINIT?MAIN
+
+Program Size: data=119.0 xdata=0 code=2384
+LINK/LOCATE RUN COMPLETE.  8 WARNING(S),  0 ERROR(S)

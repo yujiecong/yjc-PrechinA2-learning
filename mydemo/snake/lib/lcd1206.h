@@ -78,3 +78,4 @@ void lcdInit() //LCD初始化子程序
 	lcdWriteCom(0x01); //清屏
 	lcdWriteCom(0x80); //设置数据指针起点
 }
+#endif

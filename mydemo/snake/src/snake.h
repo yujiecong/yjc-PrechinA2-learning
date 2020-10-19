@@ -4,6 +4,7 @@
 #include "../lib/74hc595.h"
 #include "../lib/keyboard.h"
 #include "../lib/infrared.h"
+#include "../lib/lcd1206.h"
 #define UP 1
 #define DOWN 2
 #define LEFT 3
@@ -23,7 +24,7 @@ uchar turnFlag = 0;
 uchar vertical = 0;
 uchar horizontal = 1;
 uchar food = 0;
-
+uint score = 0;
 //蛇神位置
 
 //
@@ -35,7 +36,9 @@ void down();
 void left();
 void right();
 void createFood();
+
 //
+
 void createFood()
 {
     uchar i, j;
@@ -263,6 +266,7 @@ void initSnake()
 
     uchar i, j;
     irInitInter0();
+
     for (i = 0; i < 8; i++)
     {
         for (j = 0; j < 8; j++)

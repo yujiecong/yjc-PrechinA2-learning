@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   MAIN                                                                  10/16/2020 13:13:35 PAGE 1   
+C51 COMPILER V9.00   MAIN                                                                  10/19/2020 18:56:27 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
@@ -20,19 +20,18 @@ line level    source
   11   1          while (1)
   12   1          {
   13   2              /* code */
-  14   2      
-  15   2              ctrlSnake();
-  16   2              moveSnake();
-  17   2          }
-  18   1      }
+  14   2              ctrlSnake();
+  15   2              moveSnake();
+  16   2          }
+  17   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   1776    ----
+   CODE SIZE        =   1863    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     94      11
+   DATA SIZE        =     96      11
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
